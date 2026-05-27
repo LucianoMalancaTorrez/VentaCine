@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(${titulo})}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="form-cine">
+            <h2 class="form-titulo"><i class="fas fa-ticket-alt"></i> <span th:text="${titulo}">Nueva Venta</span></h2>
+            <form th:action="@{/ventas/guardar}" method="post">
+                <input type="hidden" name="id" th:value="${venta.id}">
+
+                <div class="mb-3">
+                    <label for="fecha" class="form-label">Fecha *</label>
+                    <input type="text" id="fecha" name="fecha" th:value="${venta.fecha}" class="form-control" placeholder="Ej: 25/03/2026" required>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="montoTotal" class="form-label">Monto total ($) *</label>
+                        <input type="text" id="montoTotal" name="montoTotal" class="form-control solo-decimales"
+                               th:value="${venta.pago != null ? venta.pago.monto : ''}" placeholder="Ej: 4000" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="tipoPago" class="form-label">Tipo de pago *</label>
+                        <select id="tipoPago" name="tipoPago" class="form-select" required>
+                            <option value="">-- Seleccioná --</option>
+                            <option th:each="tipo : ${tiposPago}" th:value="${tipo}" th:text="${tipo}"
+                                    th:selected="${venta.pago != null and venta.pago.tipo == tipo}"></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="cineId" class="form-label">Cine</label>
+                    <select id="cineId" name="cineId" class="form-select">
+                        <option value="">-- Seleccioná --</option>
+                        <option th:each="c : ${cines}" th:value="${c.id}" th:text="${c.nombre}"
+                                th:selected="${venta.cine != null and venta.cine.id == c.id}"></option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label for="clienteIds" class="form-label">Clientes</label>
+                    <select id="clienteIds" name="clienteIds" class="form-select" multiple size="4">
+                        <option th:each="cli : ${clientes}" th:value="${cli.id}"
+                                th:text="${cli.nombre + ' (' + cli.email + ')'}"
+                                th:selected="${venta.clientes.contains(cli)}"></option>
+                    </select>
+                    <small class="text-muted">Mantené Ctrl para seleccionar varios</small>
+                </div>
+
+                <div class="mb-4">
+                    <label for="funcionIds" class="form-label">Funciones</label>
+                    <select id="funcionIds" name="funcionIds" class="form-select" multiple size="4">
+                        <option th:each="func : ${funciones}" th:value="${func.id}"
+                                th:text="${func.horario + ' - ' + (func.pelicula != null ? func.pelicula.titulo : 'Sin película')}"
+                                th:selected="${venta.funciones.contains(func)}"></option>
+                    </select>
+                    <small class="text-muted">Mantené Ctrl para seleccionar varias</small>
+                </div>
+
+                <div class="d-flex gap-2 justify-content-end">
+                    <a th:href="@{/ventas}" class="btn-cine-outline"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                    <button type="submit" class="btn-cine"><i class="fas fa-save"></i> Registrar Venta</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

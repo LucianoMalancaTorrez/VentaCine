@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Empleados')}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-id-badge me-2" style="color: var(--info);"></i>Empleados</h1>
+            <a th:href="@{/empleados/nuevo}" class="btn-cine"><i class="fas fa-plus"></i> Nuevo Empleado</a>
+        </div>
+        <div th:if="${exito}" class="alerta-exito"><i class="fas fa-check-circle"></i><span th:text="${exito}"></span></div>
+        <div th:if="${error}" class="alerta-error"><i class="fas fa-exclamation-circle"></i><span th:text="${error}"></span></div>
+        <div th:if="${not #lists.isEmpty(empleados)}">
+            <table class="tabla-cine">
+                <thead><tr><th>ID</th><th>Nombre</th><th>DNI</th><th>Acciones</th></tr></thead>
+                <tbody>
+                    <tr th:each="empleado : ${empleados}">
+                        <td th:text="${empleado.id}"></td>
+                        <td th:text="${empleado.nombre}"></td>
+                        <td th:text="${empleado.dni}"></td>
+                        <td class="acciones">
+                            <a th:href="@{/empleados/editar/{id}(id=${empleado.id})}" class="btn-editar"><i class="fas fa-edit"></i> Editar</a>
+                            <a th:href="@{/empleados/eliminar/{id}(id=${empleado.id})}" class="btn-eliminar" th:data-nombre="${empleado.nombre}"><i class="fas fa-trash"></i> Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${#lists.isEmpty(empleados)}" class="empty-state">
+            <i class="fas fa-id-badge"></i><p>No hay empleados registrados</p>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

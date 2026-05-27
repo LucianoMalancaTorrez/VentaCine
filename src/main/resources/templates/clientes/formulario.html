@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(${titulo})}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="form-cine">
+            <h2 class="form-titulo"><i th:class="${esVip} ? 'fas fa-crown' : 'fas fa-user'"></i> <span th:text="${titulo}">Nuevo Cliente</span></h2>
+            <form th:action="@{/clientes/guardar}" method="post">
+                <input type="hidden" name="id" th:value="${cliente.id}">
+                <input type="hidden" name="esVip" th:value="${esVip}">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre completo *</label>
+                    <input type="text" id="nombre" name="nombre" th:value="${cliente.nombre}" class="form-control solo-letras" placeholder="Ej: Juan Pérez" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email *</label>
+                    <input type="email" id="email" name="email" th:value="${cliente.email}" class="form-control validar-email" placeholder="Ej: juan@correo.com" required>
+                </div>
+                <div class="mb-4" th:if="${esVip}">
+                    <label for="descuento" class="form-label">Descuento VIP (%) *</label>
+                    <input type="text" id="descuento" name="descuento" class="form-control solo-decimales"
+                           th:value="${esVip ? cliente.descuento : ''}"
+                           placeholder="Ej: 15.5" required>
+                </div>
+                <div class="d-flex gap-2 justify-content-end">
+                    <a th:href="@{/clientes}" class="btn-cine-outline"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                    <button type="submit" th:class="${esVip} ? 'btn-gold' : 'btn-cine'"><i class="fas fa-save"></i> Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

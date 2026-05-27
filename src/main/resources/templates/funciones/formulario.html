@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(${titulo})}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="form-cine">
+            <h2 class="form-titulo"><i class="fas fa-clock"></i> <span th:text="${titulo}">Nueva Función</span></h2>
+            <form th:action="@{/funciones/guardar}" th:object="${funcion}" method="post" novalidate>
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-3">
+                    <label for="horario" class="form-label">Horario *</label>
+                    <input type="text" id="horario" th:field="*{horario}" class="form-control"
+                           th:classappend="${#fields.hasErrors('horario')} ? 'is-invalid' : ''"
+                           placeholder="Ej: 20:00" required>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('horario')}" th:errors="*{horario}"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="pelicula" class="form-label">Película *</label>
+                    <select id="pelicula" th:field="*{pelicula.id}" class="form-select" required>
+                        <option value="">-- Seleccioná una película --</option>
+                        <option th:each="p : ${peliculas}" th:value="${p.id}" th:text="${p.titulo}"></option>
+                    </select>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('pelicula')}" th:errors="*{pelicula}"></div>
+                </div>
+                <div class="mb-4">
+                    <label for="sala" class="form-label">Sala</label>
+                    <select id="sala" th:field="*{sala.id}" class="form-select">
+                        <option value="">-- Seleccioná una sala --</option>
+                        <option th:each="s : ${salas}" th:value="${s.id}"
+                                th:text="'Sala ' + ${s.numero} + (${s.esVip()} ? ' (VIP)' : '')"></option>
+                    </select>
+                </div>
+                <div class="d-flex gap-2 justify-content-end">
+                    <a th:href="@{/funciones}" class="btn-cine-outline"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                    <button type="submit" class="btn-cine"><i class="fas fa-save"></i> Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

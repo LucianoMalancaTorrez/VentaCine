@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Clientes')}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-users me-2" style="color: var(--info);"></i>Clientes</h1>
+            <div class="d-flex gap-2">
+                <a th:href="@{/clientes/nuevo}" class="btn-cine"><i class="fas fa-plus"></i> Nuevo Cliente</a>
+                <a th:href="@{/clientes/nuevo?vip=true}" class="btn-gold"><i class="fas fa-crown"></i> Nuevo VIP</a>
+            </div>
+        </div>
+        <div th:if="${exito}" class="alerta-exito"><i class="fas fa-check-circle"></i><span th:text="${exito}"></span></div>
+        <div th:if="${error}" class="alerta-error"><i class="fas fa-exclamation-circle"></i><span th:text="${error}"></span></div>
+        <div th:if="${not #lists.isEmpty(clientes)}">
+            <table class="tabla-cine">
+                <thead><tr><th>ID</th><th>Nombre</th><th>Email</th><th>Tipo</th><th>Descuento</th><th>Acciones</th></tr></thead>
+                <tbody>
+                    <tr th:each="cliente : ${clientes}">
+                        <td th:text="${cliente.id}"></td>
+                        <td th:text="${cliente.nombre}"></td>
+                        <td th:text="${cliente.email}"></td>
+                        <td>
+                            <span th:if="${cliente.esVip()}" class="badge-vip"><i class="fas fa-crown me-1"></i>VIP</span>
+                            <span th:unless="${cliente.esVip()}" class="badge-comun">Común</span>
+                        </td>
+                        <td th:text="${cliente.esVip() ? cliente.descuento + '%' : '-'}"></td>
+                        <td class="acciones">
+                            <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}" class="btn-editar"><i class="fas fa-edit"></i> Editar</a>
+                            <a th:href="@{/clientes/eliminar/{id}(id=${cliente.id})}" class="btn-eliminar" th:data-nombre="${cliente.nombre}"><i class="fas fa-trash"></i> Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${#lists.isEmpty(clientes)}" class="empty-state">
+            <i class="fas fa-users"></i><p>No hay clientes registrados</p>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

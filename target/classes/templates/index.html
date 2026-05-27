@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Cartelera')}"></head>
+<body>
+
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-decoracion izq"></div>
+    <div class="hero-decoracion der"></div>
+    <div class="hero-content">
+        <h1><span>VentaCine</span></h1>
+        <p>Descubrí las mejores películas en cartel. Acción, comedia, drama y suspenso te esperan en nuestras salas.</p>
+        <a th:href="@{/peliculas}" class="btn-cine">
+            <i class="fas fa-play"></i> Ver cartelera completa
+        </a>
+    </div>
+</section>
+
+<main class="contenido-principal">
+    <div class="container">
+
+        <!-- Dashboard de estadísticas -->
+        <div class="row g-4 mb-5">
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon rojo"><i class="fas fa-film"></i></div>
+                    <div class="stat-numero" th:text="${totalPeliculas}">0</div>
+                    <div class="stat-label">Películas</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon dorado"><i class="fas fa-door-open"></i></div>
+                    <div class="stat-numero" th:text="${totalSalas}">0</div>
+                    <div class="stat-label">Salas</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon azul"><i class="fas fa-users"></i></div>
+                    <div class="stat-numero" th:text="${totalClientes}">0</div>
+                    <div class="stat-label">Clientes</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card">
+                    <div class="stat-icon verde"><i class="fas fa-ticket-alt"></i></div>
+                    <div class="stat-numero" th:text="${totalVentas}">0</div>
+                    <div class="stat-label">Ventas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cartelera de Películas -->
+        <h2 class="seccion-titulo">
+            <i class="fas fa-star me-2" style="color: var(--accent-gold);"></i>Cartelera
+        </h2>
+
+        <!-- Si hay películas -->
+        <div class="row g-4" th:if="${not #lists.isEmpty(peliculas)}">
+            <div class="col-sm-6 col-md-4 col-lg-3" th:each="pelicula : ${peliculas}">
+                <div class="pelicula-card">
+                    <div class="card-poster"
+                         th:classappend="${pelicula.genero.name().toLowerCase()}">
+                        <!-- Si tiene imagen, mostrar el póster -->
+                        <img th:if="${pelicula.imagenUrl != null and !pelicula.imagenUrl.isEmpty()}"
+                             th:src="${pelicula.imagenUrl}" th:alt="${pelicula.titulo}"
+                             class="poster-img"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+                        <!-- Si no tiene imagen, mostrar icono del género -->
+                        <span th:if="${pelicula.imagenUrl == null or pelicula.imagenUrl.isEmpty()}"
+                              class="poster-icon" th:switch="${pelicula.genero.name()}">
+                            <i th:case="'ACCION'" class="fas fa-explosion"></i>
+                            <i th:case="'COMEDIA'" class="fas fa-face-laugh-beam"></i>
+                            <i th:case="'DRAMA'" class="fas fa-masks-theater"></i>
+                            <i th:case="'SUSPENSO'" class="fas fa-skull"></i>
+                            <i th:case="*" class="fas fa-film"></i>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${pelicula.titulo}">Título</h5>
+                        <span class="genero-badge"
+                              th:classappend="${pelicula.genero.name().toLowerCase()}"
+                              th:text="${pelicula.genero}">Género</span>
+
+                        <!-- Horarios de funciones -->
+                        <div class="horarios" th:if="${funcionesPorPelicula.containsKey(pelicula.id)}">
+                            <small class="text-muted d-block mb-1">
+                                <i class="fas fa-clock me-1"></i>Horarios:
+                            </small>
+                            <span class="horario-chip"
+                                  th:each="funcion : ${funcionesPorPelicula.get(pelicula.id)}"
+                                  th:text="${funcion.horario}">20:00</span>
+                        </div>
+                        <div class="horarios" th:unless="${funcionesPorPelicula.containsKey(pelicula.id)}">
+                            <small class="text-muted">
+                                <i class="fas fa-info-circle me-1"></i>Sin funciones programadas
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Si no hay películas cargadas -->
+        <div th:if="${#lists.isEmpty(peliculas)}" class="empty-state">
+            <i class="fas fa-film"></i>
+            <p>No hay películas en la cartelera todavía</p>
+            <a th:href="@{/peliculas/nueva}" class="btn-cine">
+                <i class="fas fa-plus"></i> Cargar primera película
+            </a>
+        </div>
+
+    </div>
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+
+</body>
+</html>

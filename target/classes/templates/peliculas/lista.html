@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Películas')}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+
+<main class="contenido-principal">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-video me-2" style="color: var(--accent-primary);"></i>Películas</h1>
+            <a th:href="@{/peliculas/nueva}" class="btn-cine">
+                <i class="fas fa-plus"></i> Nueva Película
+            </a>
+        </div>
+
+        <!-- Mensajes -->
+        <div th:if="${exito}" class="alerta-exito"><i class="fas fa-check-circle"></i><span th:text="${exito}"></span></div>
+        <div th:if="${error}" class="alerta-error"><i class="fas fa-exclamation-circle"></i><span th:text="${error}"></span></div>
+
+        <div th:if="${not #lists.isEmpty(peliculas)}">
+            <table class="tabla-cine">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Póster</th>
+                        <th>Título</th>
+                        <th>Género</th>
+                        <th>Descuento</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="pelicula : ${peliculas}">
+                        <td th:text="${pelicula.id}"></td>
+                        <td>
+                            <img th:if="${pelicula.imagenUrl != null and !pelicula.imagenUrl.isEmpty()}"
+                                 th:src="${pelicula.imagenUrl}" th:alt="${pelicula.titulo}"
+                                 class="tabla-poster">
+                            <i th:if="${pelicula.imagenUrl == null or pelicula.imagenUrl.isEmpty()}"
+                               class="fas fa-image" style="color: var(--text-muted); font-size: 1.5rem;"></i>
+                        </td>
+                        <td th:text="${pelicula.titulo}"></td>
+                        <td>
+                            <span class="genero-badge" th:classappend="${pelicula.genero.name().toLowerCase()}" th:text="${pelicula.genero}"></span>
+                        </td>
+                        <td th:text="${pelicula.obtenerDescuento() + '%'}"></td>
+                        <td class="acciones">
+                            <a th:href="@{/peliculas/editar/{id}(id=${pelicula.id})}" class="btn-editar">
+                                <i class="fas fa-edit"></i> Editar
+                            </a>
+                            <a th:href="@{/peliculas/eliminar/{id}(id=${pelicula.id})}" class="btn-eliminar" th:data-nombre="${pelicula.titulo}">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div th:if="${#lists.isEmpty(peliculas)}" class="empty-state">
+            <i class="fas fa-film"></i>
+            <p>No hay películas registradas</p>
+            <a th:href="@{/peliculas/nueva}" class="btn-cine"><i class="fas fa-plus"></i> Agregar película</a>
+        </div>
+    </div>
+</main>
+
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

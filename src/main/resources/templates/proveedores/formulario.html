@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(${titulo})}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="form-cine">
+            <h2 class="form-titulo"><i class="fas fa-truck"></i> <span th:text="${titulo}">Nuevo Proveedor</span></h2>
+            <form th:action="@{/proveedores/guardar}" th:object="${proveedor}" method="post" novalidate>
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre del proveedor *</label>
+                    <input type="text" id="nombre" th:field="*{nombre}" class="form-control solo-letras"
+                           th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''"
+                           placeholder="Ej: Distribuidora del Sur" required>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="telefono" class="form-label">Teléfono *</label>
+                    <input type="text" id="telefono" th:field="*{telefono}" class="form-control validar-telefono"
+                           th:classappend="${#fields.hasErrors('telefono')} ? 'is-invalid' : ''"
+                           placeholder="Ej: (261) 555-1234" required>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></div>
+                </div>
+                <div class="mb-4">
+                    <label for="direccion" class="form-label">Dirección *</label>
+                    <input type="text" id="direccion" th:field="*{direccion}" class="form-control"
+                           th:classappend="${#fields.hasErrors('direccion')} ? 'is-invalid' : ''"
+                           placeholder="Ej: Calle San Martín 456, Mendoza" required>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></div>
+                </div>
+                <div class="d-flex gap-2 justify-content-end">
+                    <a th:href="@{/proveedores}" class="btn-cine-outline"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                    <button type="submit" class="btn-cine"><i class="fas fa-save"></i> Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

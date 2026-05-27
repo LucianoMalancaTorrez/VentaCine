@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(${titulo})}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="form-cine">
+            <h2 class="form-titulo">
+                <i th:class="${esVip} ? 'fas fa-crown' : 'fas fa-door-open'"></i>
+                <span th:text="${titulo}">Nueva Sala</span>
+            </h2>
+            <form th:action="@{/salas/guardar}" method="post">
+                <input type="hidden" name="id" th:value="${sala.id}">
+                <input type="hidden" name="esVip" th:value="${esVip}">
+
+                <div class="mb-3">
+                    <label for="numero" class="form-label">Número de sala *</label>
+                    <input type="text" id="numero" name="numero" th:value="${sala.numero}" class="form-control solo-numeros" placeholder="Ej: 1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="capacidad" class="form-label">Capacidad (butacas) *</label>
+                    <input type="text" id="capacidad" name="capacidad" th:value="${sala.capacidad}" class="form-control solo-numeros" placeholder="Ej: 120" required>
+                </div>
+                <div class="mb-3">
+                    <label for="cineId" class="form-label">Cine</label>
+                    <select id="cineId" name="cineId" class="form-select">
+                        <option value="">-- Sin asignar --</option>
+                        <option th:each="c : ${cines}" th:value="${c.id}" th:text="${c.nombre}"
+                                th:selected="${sala.cine != null and sala.cine.id == c.id}"></option>
+                    </select>
+                </div>
+
+                <!-- Campo extra para salas VIP -->
+                <div class="mb-4" th:if="${esVip}">
+                    <label for="beneficios" class="form-label">Beneficios VIP *</label>
+                    <textarea id="beneficios" name="beneficios" class="form-control" rows="3"
+                              placeholder="Ej: Asientos reclinables, servicio de comida, pantalla 4K"
+                              th:text="${esVip ? sala.beneficios : ''}"></textarea>
+                </div>
+
+                <div class="d-flex gap-2 justify-content-end">
+                    <a th:href="@{/salas}" class="btn-cine-outline"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                    <button type="submit" th:class="${esVip} ? 'btn-gold' : 'btn-cine'">
+                        <i class="fas fa-save"></i> Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

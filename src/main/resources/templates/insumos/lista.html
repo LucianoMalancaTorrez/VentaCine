@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Insumos')}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-box me-2" style="color: var(--warning);"></i>Insumos</h1>
+            <a th:href="@{/insumos/nuevo}" class="btn-cine"><i class="fas fa-plus"></i> Nuevo Insumo</a>
+        </div>
+        <div th:if="${exito}" class="alerta-exito"><i class="fas fa-check-circle"></i><span th:text="${exito}"></span></div>
+        <div th:if="${error}" class="alerta-error"><i class="fas fa-exclamation-circle"></i><span th:text="${error}"></span></div>
+        <div th:if="${not #lists.isEmpty(insumos)}">
+            <table class="tabla-cine">
+                <thead><tr><th>ID</th><th>Nombre</th><th>Precio</th><th>Acciones</th></tr></thead>
+                <tbody>
+                    <tr th:each="insumo : ${insumos}">
+                        <td th:text="${insumo.id}"></td>
+                        <td th:text="${insumo.nombre}"></td>
+                        <td th:text="'$' + ${insumo.precio}"></td>
+                        <td class="acciones">
+                            <a th:href="@{/insumos/editar/{id}(id=${insumo.id})}" class="btn-editar"><i class="fas fa-edit"></i> Editar</a>
+                            <a th:href="@{/insumos/eliminar/{id}(id=${insumo.id})}" class="btn-eliminar" th:data-nombre="${insumo.nombre}"><i class="fas fa-trash"></i> Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${#lists.isEmpty(insumos)}" class="empty-state">
+            <i class="fas fa-box"></i><p>No hay insumos registrados</p>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

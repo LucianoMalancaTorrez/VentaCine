@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head('Salas')}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fas fa-door-open me-2" style="color: var(--accent-gold);"></i>Salas</h1>
+            <div class="d-flex gap-2">
+                <a th:href="@{/salas/nueva}" class="btn-cine"><i class="fas fa-plus"></i> Nueva Sala</a>
+                <a th:href="@{/salas/nueva?vip=true}" class="btn-gold"><i class="fas fa-crown"></i> Nueva Sala VIP</a>
+            </div>
+        </div>
+        <div th:if="${exito}" class="alerta-exito"><i class="fas fa-check-circle"></i><span th:text="${exito}"></span></div>
+        <div th:if="${error}" class="alerta-error"><i class="fas fa-exclamation-circle"></i><span th:text="${error}"></span></div>
+
+        <div th:if="${not #lists.isEmpty(salas)}">
+            <table class="tabla-cine">
+                <thead><tr><th>ID</th><th>Número</th><th>Capacidad</th><th>Tipo</th><th>Beneficios</th><th>Funciones</th><th>Acciones</th></tr></thead>
+                <tbody>
+                    <tr th:each="sala : ${salas}">
+                        <td th:text="${sala.id}"></td>
+                        <td th:text="${sala.numero}"></td>
+                        <td><i class="fas fa-chair me-1"></i><span th:text="${sala.capacidad}"></span></td>
+                        <td>
+                            <span th:if="${sala.esVip()}" class="badge-vip"><i class="fas fa-crown me-1"></i>VIP</span>
+                            <span th:unless="${sala.esVip()}" class="badge-comun">Común</span>
+                        </td>
+                        <td th:text="${sala.esVip() ? sala.beneficios : '-'}"></td>
+                        <td th:text="${sala.funciones.size()}"></td>
+                        <td class="acciones">
+                            <a th:href="@{/salas/editar/{id}(id=${sala.id})}" class="btn-editar"><i class="fas fa-edit"></i> Editar</a>
+                            <a th:href="@{/salas/eliminar/{id}(id=${sala.id})}" class="btn-eliminar" data-nombre="esta sala"><i class="fas fa-trash"></i> Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div th:if="${#lists.isEmpty(salas)}" class="empty-state">
+            <i class="fas fa-door-open"></i><p>No hay salas registradas</p>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/header :: head(${titulo})}"></head>
+<body>
+<nav th:replace="~{fragments/header :: navbar}"></nav>
+<main class="contenido-principal">
+    <div class="container">
+        <div class="form-cine">
+            <h2 class="form-titulo"><i class="fas fa-id-badge"></i> <span th:text="${titulo}">Nuevo Empleado</span></h2>
+            <form th:action="@{/empleados/guardar}" th:object="${empleado}" method="post" novalidate>
+                <input type="hidden" th:field="*{id}">
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre completo *</label>
+                    <input type="text" id="nombre" th:field="*{nombre}" class="form-control solo-letras"
+                           th:classappend="${#fields.hasErrors('nombre')} ? 'is-invalid' : ''"
+                           placeholder="Ej: María López" required>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></div>
+                </div>
+                <div class="mb-4">
+                    <label for="dni" class="form-label">DNI *</label>
+                    <input type="text" id="dni" th:field="*{dni}" class="form-control solo-numeros"
+                           th:classappend="${#fields.hasErrors('dni')} ? 'is-invalid' : ''"
+                           placeholder="Ej: 12345678" required>
+                    <div class="invalid-feedback" th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}"></div>
+                </div>
+                <div class="d-flex gap-2 justify-content-end">
+                    <a th:href="@{/empleados}" class="btn-cine-outline"><i class="fas fa-arrow-left"></i> Cancelar</a>
+                    <button type="submit" class="btn-cine"><i class="fas fa-save"></i> Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+<footer th:replace="~{fragments/footer :: footer}"></footer>
+<div th:replace="~{fragments/footer :: scripts}"></div>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Fragment HEAD: incluye CSS, fuentes y meta tags -->
+<head th:fragment="head(pageTitle)">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VentaCine - Sistema de gestión para cine. Cartelera, funciones y venta de entradas.">
+    <title th:text="${pageTitle} + ' | VentaCine'">VentaCine</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome para iconos -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <!-- Estilos personalizados -->
+    <link th:href="@{/css/styles.css}" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- Fragment NAVBAR: barra de navegación principal -->
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/}">
+            <i class="fas fa-film logo-icon"></i>
+            <span class="brand-text">VentaCine</span>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarPrincipal">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarPrincipal">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}" th:classappend="${#strings.equals(paginaActual, 'inicio')} ? 'active' : ''">
+                        <i class="fas fa-home me-1"></i> Inicio
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/peliculas}" th:classappend="${#strings.equals(paginaActual, 'peliculas')} ? 'active' : ''">
+                        <i class="fas fa-video me-1"></i> Películas
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/funciones}" th:classappend="${#strings.equals(paginaActual, 'funciones')} ? 'active' : ''">
+                        <i class="fas fa-clock me-1"></i> Funciones
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/salas}" th:classappend="${#strings.equals(paginaActual, 'salas')} ? 'active' : ''">
+                        <i class="fas fa-door-open me-1"></i> Salas
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/ventas}" th:classappend="${#strings.equals(paginaActual, 'ventas')} ? 'active' : ''">
+                        <i class="fas fa-ticket-alt me-1"></i> Ventas
+                    </a>
+                </li>
+
+                <!-- Menú desplegable para administración -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                        <i class="fas fa-cog me-1"></i> Administración
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li>
+                            <a class="dropdown-item" th:href="@{/clientes}">
+                                <i class="fas fa-users me-2"></i> Clientes
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/empleados}">
+                                <i class="fas fa-id-badge me-2"></i> Empleados
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/compras}">
+                                <i class="fas fa-shopping-cart me-2"></i> Compras
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/insumos}">
+                                <i class="fas fa-popcorn me-2"></i> Insumos
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" th:href="@{/proveedores}">
+                                <i class="fas fa-truck me-2"></i> Proveedores
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
