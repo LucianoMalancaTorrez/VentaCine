@@ -1,14 +1,9 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-/**
- * Entidad que representa un proveedor de insumos para el cine.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "proveedores")
 public class Proveedor {
@@ -40,8 +35,6 @@ public class Proveedor {
         this.telefono = telefono;
         this.direccion = direccion;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;

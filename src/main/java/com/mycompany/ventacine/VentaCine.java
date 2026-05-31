@@ -1,21 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
-package com.mycompany.ventacine;
-
-/**
- *
- * @author USUARIO
- */
-
-//2.	Ejercicio 1 - Implementar desde el diagrama de clases – REQUERIMIENTOS QUE DEBE MOSTRAR UN MENSAJE POR PANTALLA DE SALIDA:
-
-//-	Mencione el nombre, dni de 2 empleados que trabajen en el cine. Para este mismo Cine, debe mencionas cuantas salas Vip (al menos 2) y cuantas salas comunes (al menos 2) se disponen, que funciones se dan en cada una de ellas (horarios), con las entradas (precio y asiento) y las películas (título y genero) que se muestran en cada sala. 
-
-//-	Para este mismo Cine, debe mencionas cuantas ventas (al menos 2) se realizaron, para al menos una función ya instanciada del sistema. Para dicha función (horario), menciones las entradas (precio y asiento) y las películas (título y genero) que se muestran para venta. Además, no olvide mencionar los datos de los clientes al que se le vendió la entrada. 
-
-//-	En todos los casos podrá crear constructores y los métodos que le sean necesarios para reflejar adecuadamente las asociaciones que se observa en el diagrama. 
+﻿package com.mycompany.ventacine;
 
  
 
@@ -172,7 +155,6 @@ package com.mycompany.ventacine;
         " Asiento " +
         cine.getVentas().get(0).getFunciones().get(0).getEntradas().get(0).getAsiento()
         );
-
 
  
         System.out.println("\nFecha: " + cine.getVentas().get(1).getFecha());

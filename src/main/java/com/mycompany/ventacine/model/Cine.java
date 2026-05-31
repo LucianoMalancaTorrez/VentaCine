@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -8,12 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Entidad que representa un complejo de cine.
- * Un cine tiene empleados, salas, películas, ventas y compras.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "cines")
 public class Cine {
@@ -65,8 +59,6 @@ public class Cine {
         this.direccion = direccion;
     }
 
-    // Getters y Setters
-
     public Long getId() {
         return id;
     }
@@ -116,9 +108,7 @@ public class Cine {
         sala.setCine(this);
     }
 
-    /**
-     * Devuelve solo las salas comunes (no VIP).
-     */
+    
     @Transient
     public List<Sala> getSalasComunes() {
         return salas.stream()
@@ -126,9 +116,7 @@ public class Cine {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Devuelve solo las salas VIP.
-     */
+    
     @Transient
     public List<SalaVIP> getSalasVIP() {
         return salas.stream()

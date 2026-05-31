@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.service;
+﻿package com.mycompany.ventacine.service;
 
 import com.mycompany.ventacine.model.Funcion;
 import com.mycompany.ventacine.model.Venta;
@@ -11,11 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * Servicio para la gestión de funciones cinematográficas.
- *
- * @author USUARIO
- */
 @Service
 public class FuncionService {
 
@@ -47,13 +42,11 @@ public class FuncionService {
 
     @Transactional
     public void eliminar(Long id) {
-        // Remover la función de todas las ventas que la tengan asociada
         List<Venta> ventas = ventaRepository.findAll();
         for (Venta venta : ventas) {
             venta.getFunciones().removeIf(f -> f.getId().equals(id));
         }
         ventaRepository.saveAll(ventas);
-        // La función tiene cascade ALL en entradas, así que se borran automáticamente
         funcionRepository.deleteById(id);
     }
 }

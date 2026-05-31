@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
@@ -6,11 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-/**
- * Entidad que representa un empleado del cine.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "empleados")
 public class Empleado {
@@ -36,8 +31,6 @@ public class Empleado {
         this.nombre = nombre;
         this.dni = dni;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;

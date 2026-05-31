@@ -1,16 +1,10 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
-/**
- * Entidad que representa una entrada vendida para una función.
- * Cada entrada tiene un precio y un asiento asignado.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "entradas")
 public class Entrada {
@@ -39,8 +33,6 @@ public class Entrada {
         this.precio = precio;
         this.asiento = asiento;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;

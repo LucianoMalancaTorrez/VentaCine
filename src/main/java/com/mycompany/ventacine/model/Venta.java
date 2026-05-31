@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -6,12 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Entidad que representa una venta de entradas.
- * Cada venta tiene una fecha, un pago, clientes y funciones asociadas.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "ventas")
 public class Venta {
@@ -55,8 +49,6 @@ public class Venta {
         this.fecha = fecha;
         this.pago = pago;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;

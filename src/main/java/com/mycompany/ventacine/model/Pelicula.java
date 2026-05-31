@@ -1,16 +1,10 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
-/**
- * Entidad que representa una película del cine.
- * Implementa la interfaz IPromocion para aplicar descuentos.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "peliculas")
 public class Pelicula implements IPromocion {
@@ -47,8 +41,6 @@ public class Pelicula implements IPromocion {
         this.imagenUrl = imagenUrl;
     }
 
-    // Getters y Setters
-
     public Long getId() {
         return id;
     }
@@ -81,10 +73,7 @@ public class Pelicula implements IPromocion {
         this.imagenUrl = imagenUrl;
     }
 
-    /**
-     * Descuento promocional aplicable a la película.
-     * Devuelve un porcentaje fijo del 8.70%.
-     */
+    
     @Override
     @Transient
     public float obtenerDescuento() {

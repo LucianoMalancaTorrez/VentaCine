@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -6,11 +6,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 
-/**
- * Entidad que representa un insumo del cine (pochoclos, bebidas, etc.).
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "insumos")
 public class Insumo {
@@ -36,8 +31,6 @@ public class Insumo {
         this.nombre = nombre;
         this.precio = precio;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;

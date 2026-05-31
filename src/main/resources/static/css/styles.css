@@ -1,12 +1,7 @@
-/* ============================================= */
-/* VentaCine - Sistema de Gestión de Cine        */
-/* Tema cinematográfico con estilo propio        */
-/* ============================================= */
+﻿
 
-/* Fuentes */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=DM+Sans:wght@300;400;500;600;700&display=swap');
 
-/* Variables de color - paleta azul profundo / violeta / cobre */
 :root {
     --bg-primary: #0d1117;
     --bg-secondary: #161b22;
@@ -36,7 +31,6 @@
     --radius-lg: 20px;
 }
 
-/* Reset y base */
 * {
     margin: 0;
     padding: 0;
@@ -61,9 +55,6 @@ a:hover {
     color: var(--accent-primary-hover);
 }
 
-/* ============================================= */
-/* NAVBAR                                        */
-/* ============================================= */
 .navbar {
     background: var(--bg-navbar) !important;
     backdrop-filter: blur(16px);
@@ -128,7 +119,6 @@ a:hover {
     filter: invert(1);
 }
 
-/* Dropdown en navbar */
 .dropdown-menu {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -154,9 +144,6 @@ a:hover {
     border-color: var(--border-color);
 }
 
-/* ============================================= */
-/* HERO SECTION (Página principal)               */
-/* ============================================= */
 .hero-section {
     position: relative;
     min-height: 440px;
@@ -244,9 +231,6 @@ a:hover {
     50% { transform: scale(1.15); opacity: 0.2; }
 }
 
-/* ============================================= */
-/* CARDS DE PELÍCULAS                            */
-/* ============================================= */
 .seccion-titulo {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
@@ -400,9 +384,6 @@ a:hover {
     color: var(--accent-primary);
 }
 
-/* ============================================= */
-/* SECCIÓN DE CONTENIDO (páginas internas)       */
-/* ============================================= */
 .contenido-principal {
     min-height: calc(100vh - 200px);
     padding: 2rem 0;
@@ -424,9 +405,6 @@ a:hover {
     color: var(--text-primary);
 }
 
-/* ============================================= */
-/* BOTONES                                       */
-/* ============================================= */
 .btn-cine {
     background: var(--accent-primary);
     color: white;
@@ -519,9 +497,6 @@ a:hover {
     color: white;
 }
 
-/* ============================================= */
-/* TABLAS                                        */
-/* ============================================= */
 .tabla-cine {
     width: 100%;
     background: var(--bg-card);
@@ -573,9 +548,6 @@ a:hover {
     flex-wrap: wrap;
 }
 
-/* ============================================= */
-/* FORMULARIOS                                   */
-/* ============================================= */
 .form-cine {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -645,9 +617,6 @@ a:hover {
     margin-right: 8px;
 }
 
-/* ============================================= */
-/* ALERTAS Y MENSAJES                            */
-/* ============================================= */
 .alerta-exito {
     background: rgba(45, 204, 113, 0.08);
     border: 1px solid rgba(45, 204, 113, 0.2);
@@ -681,9 +650,6 @@ a:hover {
     to { opacity: 1; transform: translateX(0); }
 }
 
-/* ============================================= */
-/* FOOTER                                        */
-/* ============================================= */
 .footer-cine {
     background: var(--bg-secondary);
     border-top: 1px solid var(--border-color);
@@ -722,9 +688,6 @@ a:hover {
     transform: translateY(-2px);
 }
 
-/* ============================================= */
-/* ESTADÍSTICAS (Dashboard)                      */
-/* ============================================= */
 .stat-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -763,9 +726,6 @@ a:hover {
     font-weight: 500;
 }
 
-/* ============================================= */
-/* BADGE VIP                                     */
-/* ============================================= */
 .badge-vip {
     background: linear-gradient(135deg, var(--accent-violet), var(--accent-violet-light));
     color: white;
@@ -786,9 +746,6 @@ a:hover {
     font-weight: 600;
 }
 
-/* ============================================= */
-/* UTILIDADES                                    */
-/* ============================================= */
 .text-gradient {
     color: var(--accent-primary);
 }
@@ -817,7 +774,6 @@ a:hover {
     margin-bottom: 1.5rem;
 }
 
-/* Scrollbar personalizada */
 ::-webkit-scrollbar {
     width: 7px;
 }
@@ -835,15 +791,11 @@ a:hover {
     background: var(--text-muted);
 }
 
-/* Selección de texto */
 ::selection {
     background: rgba(201, 135, 59, 0.3);
     color: white;
 }
 
-/* ============================================= */
-/* RESPONSIVE                                    */
-/* ============================================= */
 @media (max-width: 768px) {
     .hero-content h1 {
         font-size: 1.8rem;

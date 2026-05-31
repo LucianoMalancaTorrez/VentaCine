@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -7,13 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Entidad que representa una función (proyección) en el cine.
- * Una función tiene un horario, una película asociada y se
- * realiza en una sala específica.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "funciones")
 public class Funcion {
@@ -45,8 +38,6 @@ public class Funcion {
         this.horario = horario;
         this.pelicula = pelicula;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;

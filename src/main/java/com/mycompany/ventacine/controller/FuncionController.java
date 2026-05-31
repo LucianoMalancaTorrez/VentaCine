@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.controller;
+﻿package com.mycompany.ventacine.controller;
 
 import com.mycompany.ventacine.model.Funcion;
 import com.mycompany.ventacine.service.FuncionService;
@@ -14,11 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
-/**
- * Controlador CRUD para la gestión de funciones.
- *
- * @author USUARIO
- */
 @Controller
 @RequestMapping("/funciones")
 public class FuncionController {

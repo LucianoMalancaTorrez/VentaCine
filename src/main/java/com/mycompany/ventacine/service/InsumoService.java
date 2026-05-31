@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.service;
+﻿package com.mycompany.ventacine.service;
 
 import com.mycompany.ventacine.model.Insumo;
 import com.mycompany.ventacine.repository.InsumoRepository;

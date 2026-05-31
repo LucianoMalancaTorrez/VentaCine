@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.controller;
+﻿package com.mycompany.ventacine.controller;
 
 import com.mycompany.ventacine.model.Empleado;
 import com.mycompany.ventacine.service.EmpleadoService;

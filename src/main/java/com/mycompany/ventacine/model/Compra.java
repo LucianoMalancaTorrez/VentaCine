@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -6,11 +6,6 @@ import jakarta.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Entidad que representa una compra de insumos a proveedores.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "compras")
 public class Compra {
@@ -49,8 +44,6 @@ public class Compra {
     public Compra(String fecha) {
         this.fecha = fecha;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;

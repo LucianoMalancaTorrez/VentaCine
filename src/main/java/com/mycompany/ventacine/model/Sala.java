@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -7,12 +7,6 @@ import jakarta.validation.constraints.Positive;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Entidad que representa una sala de cine.
- * Utiliza herencia SINGLE_TABLE para soportar SalaVIP.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "salas")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -48,8 +42,6 @@ public class Sala {
         this.numero = numero;
         this.capacidad = capacidad;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;
@@ -96,9 +88,7 @@ public class Sala {
         funcion.setSala(this);
     }
 
-    /**
-     * Indica si la sala es VIP.
-     */
+    
     @Transient
     public boolean esVip() {
         return this instanceof SalaVIP;

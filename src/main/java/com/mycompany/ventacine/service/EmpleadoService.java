@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.service;
+﻿package com.mycompany.ventacine.service;
 
 import com.mycompany.ventacine.model.Cine;
 import com.mycompany.ventacine.model.Empleado;
@@ -34,7 +34,6 @@ public class EmpleadoService {
 
     @Transactional
     public void eliminar(Long id) {
-        // Remover el empleado de todos los cines que lo tengan asociado
         List<Cine> cines = cineRepository.findAll();
         for (Cine cine : cines) {
             cine.getEmpleados().removeIf(e -> e.getId().equals(id));

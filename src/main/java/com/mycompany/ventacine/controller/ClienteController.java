@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.controller;
+﻿package com.mycompany.ventacine.controller;
 
 import com.mycompany.ventacine.model.Cliente;
 import com.mycompany.ventacine.model.ClienteVIP;
@@ -11,11 +11,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
-/**
- * Controlador CRUD para la gestión de clientes (comunes y VIP).
- *
- * @author USUARIO
- */
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -62,7 +57,6 @@ public class ClienteController {
                           @RequestParam(required = false) Long id,
                           RedirectAttributes redirect) {
         try {
-            // Validaciones manuales
             if (nombre == null || nombre.trim().isEmpty()) {
                 redirect.addFlashAttribute("error", "El nombre del cliente es obligatorio");
                 return "redirect:/clientes/nuevo";

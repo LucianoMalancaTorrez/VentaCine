@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.controller;
+﻿package com.mycompany.ventacine.controller;
 
 import com.mycompany.ventacine.model.*;
 import com.mycompany.ventacine.service.*;
@@ -79,18 +79,15 @@ public class VentaController {
             }
             venta.setFecha(fecha.trim());
 
-            // Crear el pago asociado
             Pago pago = new Pago();
             pago.setMonto(montoTotal);
             pago.setTipo(TipoPago.valueOf(tipoPago));
             venta.setPago(pago);
 
-            // Asociar el cine
             if (cineId != null) {
                 cineService.buscarPorId(cineId).ifPresent(venta::setCine);
             }
 
-            // Asociar clientes seleccionados
             if (clienteIds != null && !clienteIds.isEmpty()) {
                 List<Cliente> clientes = new ArrayList<>();
                 for (Long clienteId : clienteIds) {
@@ -99,7 +96,6 @@ public class VentaController {
                 venta.setClientes(clientes);
             }
 
-            // Asociar funciones seleccionadas
             if (funcionIds != null && !funcionIds.isEmpty()) {
                 List<Funcion> funciones = new ArrayList<>();
                 for (Long funcionId : funcionIds) {

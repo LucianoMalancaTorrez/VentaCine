@@ -1,15 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-package com.mycompany.ventacine;
+﻿package com.mycompany.ventacine;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author USUARIO
- */
 public class Venta {
     private String Fecha;
     private Pago pago;
@@ -50,7 +42,6 @@ public class Venta {
     public void addClientes(Cliente clientes) {
         this.clientes.add(clientes);
     }
-
 
     public ArrayList<Funcion> getFunciones() {
         return funciones;

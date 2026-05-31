@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.controller;
+﻿package com.mycompany.ventacine.controller;
 
 import com.mycompany.ventacine.model.Sala;
 import com.mycompany.ventacine.model.SalaVIP;
@@ -14,11 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
-/**
- * Controlador CRUD para la gestión de salas (comunes y VIP).
- *
- * @author USUARIO
- */
 @Controller
 @RequestMapping("/salas")
 public class SalaController {

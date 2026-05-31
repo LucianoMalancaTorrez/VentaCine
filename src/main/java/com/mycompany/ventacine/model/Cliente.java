@@ -1,17 +1,10 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-/**
- * Entidad que representa un cliente del cine.
- * Utiliza herencia SINGLE_TABLE: los clientes VIP se almacenan
- * en la misma tabla diferenciados por la columna 'tipo_cliente'.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "clientes")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -41,8 +34,6 @@ public class Cliente {
         this.email = email;
     }
 
-    // Getters y Setters
-
     public Long getId() {
         return id;
     }
@@ -67,9 +58,7 @@ public class Cliente {
         this.email = email;
     }
 
-    /**
-     * Indica si el cliente es VIP.
-     */
+    
     @Transient
     public boolean esVip() {
         return this instanceof ClienteVIP;

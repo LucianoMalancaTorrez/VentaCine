@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: head('Películas')}"></head>
 <body>
@@ -12,8 +12,6 @@
                 <i class="fas fa-plus"></i> Nueva Película
             </a>
         </div>
-
-        <!-- Mensajes -->
         <div th:if="${exito}" class="alerta-exito"><i class="fas fa-check-circle"></i><span th:text="${exito}"></span></div>
         <div th:if="${error}" class="alerta-error"><i class="fas fa-exclamation-circle"></i><span th:text="${error}"></span></div>
 

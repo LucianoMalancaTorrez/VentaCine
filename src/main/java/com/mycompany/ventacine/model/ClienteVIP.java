@@ -1,14 +1,8 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 
-/**
- * Entidad que representa un cliente VIP del cine.
- * Hereda de Cliente y agrega un descuento especial.
- *
- * @author USUARIO
- */
 @Entity
 @DiscriminatorValue("VIP")
 public class ClienteVIP extends Cliente {

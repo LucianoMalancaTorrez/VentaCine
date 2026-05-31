@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.service;
+﻿package com.mycompany.ventacine.service;
 
 import com.mycompany.ventacine.model.Sala;
 import com.mycompany.ventacine.model.SalaVIP;
@@ -10,11 +10,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * Servicio para la gestión de salas (comunes y VIP).
- *
- * @author USUARIO
- */
 @Service
 public class SalaService {
 

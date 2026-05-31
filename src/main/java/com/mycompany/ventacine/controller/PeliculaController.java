@@ -1,4 +1,4 @@
-package com.mycompany.ventacine.controller;
+﻿package com.mycompany.ventacine.controller;
 
 import com.mycompany.ventacine.model.Pelicula;
 import com.mycompany.ventacine.model.Genero;
@@ -14,11 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Optional;
 
-/**
- * Controlador CRUD para la gestión de películas.
- *
- * @author USUARIO
- */
 @Controller
 @RequestMapping("/peliculas")
 public class PeliculaController {
@@ -72,7 +67,6 @@ public class PeliculaController {
     @GetMapping("/eliminar/{id}")
     public String eliminar(@PathVariable Long id, RedirectAttributes redirect) {
         try {
-            // Verificar si la película tiene funciones asociadas
             if (!funcionService.buscarPorPelicula(id).isEmpty()) {
                 redirect.addFlashAttribute("error", "No se pudo eliminar la película. Tiene funciones asociadas. Eliminá primero las funciones.");
                 return "redirect:/peliculas";

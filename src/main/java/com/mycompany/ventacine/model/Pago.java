@@ -1,15 +1,9 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
-/**
- * Entidad que representa un pago asociado a una venta.
- * Almacena el monto total y el tipo de pago utilizado.
- *
- * @author USUARIO
- */
 @Entity
 @Table(name = "pagos")
 public class Pago {
@@ -35,8 +29,6 @@ public class Pago {
         this.monto = monto;
         this.tipo = tipo;
     }
-
-    // Getters y Setters
 
     public Long getId() {
         return id;

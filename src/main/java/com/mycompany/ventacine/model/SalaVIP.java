@@ -1,15 +1,9 @@
-package com.mycompany.ventacine.model;
+﻿package com.mycompany.ventacine.model;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.validation.constraints.Size;
 
-/**
- * Entidad que representa una sala VIP del cine.
- * Hereda de Sala y agrega los beneficios exclusivos.
- *
- * @author USUARIO
- */
 @Entity
 @DiscriminatorValue("VIP")
 public class SalaVIP extends Sala {

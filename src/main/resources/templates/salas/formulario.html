@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/header :: head(${titulo})}"></head>
 <body>
@@ -30,8 +30,6 @@
                                 th:selected="${sala.cine != null and sala.cine.id == c.id}"></option>
                     </select>
                 </div>
-
-                <!-- Campo extra para salas VIP -->
                 <div class="mb-4" th:if="${esVip}">
                     <label for="beneficios" class="form-label">Beneficios VIP *</label>
                     <textarea id="beneficios" name="beneficios" class="form-control" rows="3"
