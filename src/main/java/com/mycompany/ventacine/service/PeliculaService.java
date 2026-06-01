@@ -1,4 +1,4 @@
-﻿package com.mycompany.ventacine.service;
+package com.mycompany.ventacine.service;
 
 import com.mycompany.ventacine.model.Cine;
 import com.mycompany.ventacine.model.Pelicula;

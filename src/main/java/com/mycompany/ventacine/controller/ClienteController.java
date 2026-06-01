@@ -1,4 +1,4 @@
-﻿package com.mycompany.ventacine.controller;
+package com.mycompany.ventacine.controller;
 
 import com.mycompany.ventacine.model.Cliente;
 import com.mycompany.ventacine.model.ClienteVIP;

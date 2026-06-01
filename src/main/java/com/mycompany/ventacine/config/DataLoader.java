@@ -1,4 +1,4 @@
-﻿package com.mycompany.ventacine.config;
+package com.mycompany.ventacine.config;
 
 import com.mycompany.ventacine.model.*;
 import com.mycompany.ventacine.repository.*;
@@ -50,11 +50,11 @@ public class DataLoader implements CommandLineRunner {
         cine.addEmpleado(e1);
         cine.addEmpleado(e2);
 
-        Pelicula p1 = new Pelicula("Venom: El Último Baile", Genero.ACCION, "https://image.tmdb.org/t/p/w500/k42Owka8v91Eu9emoga2LQp5FIk.jpg");
-        Pelicula p2 = new Pelicula("Gladiador II", Genero.ACCION, "https://image.tmdb.org/t/p/w500/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg");
-        Pelicula p3 = new Pelicula("El Contador de Cartas", Genero.DRAMA, "https://image.tmdb.org/t/p/w500/gSMBuuVeLbiDaQrPDkXFyVctyOF.jpg");
-        Pelicula p4 = new Pelicula("¿Qué Pasó Ayer?", Genero.COMEDIA, "https://image.tmdb.org/t/p/w500/uluhlXubGu1VxJMOFOk3TDlLSbN.jpg");
-        Pelicula p5 = new Pelicula("Alien: Romulus", Genero.SUSPENSO, "https://image.tmdb.org/t/p/w500/b33nnKl1GSFbao4l3fJQJQmdfys.jpg");
+        Pelicula p1 = new Pelicula("Venom: El Último Baile", Genero.ACCION, "/img/venom.png");
+        Pelicula p2 = new Pelicula("Gladiador II", Genero.ACCION, "/img/gladiator.png");
+        Pelicula p3 = new Pelicula("El Contador de Cartas", Genero.DRAMA, "/img/cardcounter.png");
+        Pelicula p4 = new Pelicula("¿Qué Pasó Ayer?", Genero.COMEDIA, "/img/hangover.png");
+        Pelicula p5 = new Pelicula("Alien: Romulus", Genero.SUSPENSO, "/img/alien.png");
         peliculaRepository.save(p1);
         peliculaRepository.save(p2);
         peliculaRepository.save(p3);

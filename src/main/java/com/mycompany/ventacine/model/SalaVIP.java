@@ -1,4 +1,4 @@
-﻿package com.mycompany.ventacine.model;
+package com.mycompany.ventacine.model;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;

@@ -1,4 +1,4 @@
-﻿package com.mycompany.ventacine.service;
+package com.mycompany.ventacine.service;
 
 import com.mycompany.ventacine.model.Entrada;
 import com.mycompany.ventacine.repository.EntradaRepository;

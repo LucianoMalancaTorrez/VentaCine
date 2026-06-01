@@ -1,4 +1,4 @@
-﻿package com.mycompany.ventacine.model;
+package com.mycompany.ventacine.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

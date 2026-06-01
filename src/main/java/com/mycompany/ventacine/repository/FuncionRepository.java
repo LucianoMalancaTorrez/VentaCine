@@ -1,4 +1,4 @@
-﻿package com.mycompany.ventacine.repository;
+package com.mycompany.ventacine.repository;
 
 import com.mycompany.ventacine.model.Funcion;
 import org.springframework.data.jpa.repository.JpaRepository;

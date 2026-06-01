@@ -1,4 +1,4 @@
-﻿package com.mycompany.ventacine.service;
+package com.mycompany.ventacine.service;
 
 import com.mycompany.ventacine.model.Sala;
 import com.mycompany.ventacine.model.SalaVIP;
