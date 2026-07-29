@@ -1,24 +1,5 @@
-# Compilación
 target/
-*.class
-
-# IDE
 .idea/
+*.class
 *.iml
-.vscode/
-*.swp
-*.swo
-
-# Maven
-.mvn/
-mvnw
-mvnw.cmd
-
-# OS
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
-
-target/
+*.jar
